@@ -8,6 +8,8 @@ import OptionModal from './OptionModal';
 export default class IndecisionApp extends React.Component {
   state = {
     options: [],
+    colors: [],
+    prices: [],
     selectedOption: undefined
   };
   handleDeleteOptions = () => {
@@ -28,17 +30,27 @@ export default class IndecisionApp extends React.Component {
       selectedOption: option
     }));
   };
-  handleAddOption = (option) => {
+
+
+  handleAddOption = (option,color,price) => {
     if (!option) {
       return 'Enter valid value to add item';
     } else if (this.state.options.indexOf(option) > -1) {
       return 'This option already exists';
     }
 
+    
+console.log(color);
+console.log(price);
     this.setState((prevState) => ({
-      options: prevState.options.concat(option)
+      options: prevState.options.concat(option),
+      colors: prevState.options.concat(color),
+      prices: prevState.options.concat(price)
     }));
   };
+
+
+
   componentDidMount() {
     try {
       const json = localStorage.getItem('options');
@@ -74,9 +86,12 @@ export default class IndecisionApp extends React.Component {
           <div className="widget">
             <Options
               options={this.state.options}
+              colors = {this.state.colors}
+              prices = {this.state.prices}
               handleDeleteOptions={this.handleDeleteOptions}
               handleDeleteOption={this.handleDeleteOption}
             />
+            
             <AddOption
               handleAddOption={this.handleAddOption}
             />
