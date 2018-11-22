@@ -2,9 +2,11 @@
 .footer {  
     background:  $light-blue;
     align-items: center;
+    position: relative;
+    min-height: 100%;
+    bottom: 0;
     display: flex;
     justify-content: center;
     border: 1rem;
-    margin-top: 10rem;
     color: rgb(250, 233, 233);
 }

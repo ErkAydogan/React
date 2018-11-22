@@ -9,15 +9,17 @@ import Dictionaries from './Dictionaries';
 
 export default class IndecisionApp extends React.Component {
   state = {
-    options: [],
-    colors: [],
-    prices: [],
+    options: ['Apple iPhone 6s','Samsung Galaxy S8', 'Huawei P9'],
+    colors: ['Dark Grey', 'Black', 'Silver'],
+    prices: ['CHF 769','CHF 569', 'CHF 272'],
     domains: [],
     ranges: [],
     selectedOption: undefined
   };
   handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
+    this.setState(() => ({ colors: [] }));
+    this.setState(() => ({ prices: [] }));
   };
  
   handleGetData = () => {
@@ -54,19 +56,19 @@ export default class IndecisionApp extends React.Component {
     
     alert(option);
     if (!option) {
-      return 'Enter valid value to add item';
+      return 'Enter a valid value to add item';
     } else if (this.state.options.indexOf(option) > -1) {
       return 'This option already exists';
     }
 
     if (!color) {
-      return 'Enter valid value to add item';
+      return 'Enter a valid value to add item';
     } else if (this.state.colors.indexOf(color) > -1) {
       return 'This option already exists';
     }
 
     if (!price) {
-      return 'Enter valid value to add item';
+      return 'Enter a valid value to add item';
     } else if (this.state.prices.indexOf(option) > -1) {
       return 'This option already exists';
     }
@@ -82,17 +84,15 @@ export default class IndecisionApp extends React.Component {
   
   handleAddDictionary = (domain,range) => {
 alert(domain);
-alert(range);
-alert("EDMIR");
 
-    if(!domain){
-      return 'Enter valid domain to add a dictionary';
+ if(!domain){
+      return 'Enter a valid domain to add a dictionary';
     } else if (this.state.domains.indexOf(domain) > -1) {
       return 'This domain already exists';
     }
 
     if (!range) {
-      return 'Enter valid range to add a dictionary';
+      return 'Enter a valid range to add a dictionary';
     } else if (this.state.options.indexOf(option) > -1) {
       return 'This option already exists';
     }
@@ -184,13 +184,14 @@ alert("EDMIR");
             <AddOption
               handleAddOption={this.handleAddOption}
             />
-
+    
             <Dictionaries
             domains = {this.state.domains}
             ranges = {this.state.ranges}
 
             handleShowDictionary={this.handleShowDictionary}
             />
+
             <AddDictionary
             handleAddDictionary= {this.handleAddDictionary}
             />

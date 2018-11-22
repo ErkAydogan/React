@@ -12,6 +12,7 @@ const Option = (props) => (
     >
       remove
     </button>
+    <hr></hr>
   </div>
 );
 

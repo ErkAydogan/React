@@ -26,15 +26,12 @@ error: undefined
     };
     render() {
       return (
-        <view> 
-        <div className="widget-header">
-         </div>
-         <div>
-        <h3 className="widget-header__title">Your Dictionary</h3>
+        <view>       
+         <div>  
           {this.state.error && <p className="add-dictionary-error">{this.state.error}</p>}
           <form className="add-dictionary" onSubmit={this.handleAddDictionary}>
-            <input className="add-dictionary__domain" type="text" name="domain" placeholder="domain"/>
-            <input  className="add-dictionary__range" type="text" name="range" placeholder="range"/>
+            <input className="add-dictionary__domain" type="text" name="domain" placeholder="Domain"/>
+            <input  className="add-dictionary__range" type="text" name="range" placeholder="Range"/>
             <button className="button">Add Dictionary</button>
           </form>
 
