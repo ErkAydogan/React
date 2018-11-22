@@ -1,4 +1,4 @@
-.add-option-error {
+.add-dictionary-error {
     color: $off-white;
     font-style: italic;
     margin: $m-size 0 0 0;
@@ -6,12 +6,12 @@
 
 }
 
-.add-option {
+.add-dictionary {
     display: flex;
     padding: $m-size;
 }
 
-.add-option__input {
+.add-dictionary__domain {
     background: $dark-blue;
     border: none;
     color: $off-white;
@@ -24,7 +24,7 @@ padding: $s-size;
 }
 
 
-.add-color__input {
+.add-dictionary__range {
     background: $dark-blue;
     border: none;
     color: $off-white;
@@ -37,19 +37,3 @@ padding: $s-size;
 }
 
 
-
-.add-price__input {
-    background: $dark-blue;
-    border: none;
-    width: 4rem;
-    color: $off-white;
-    border-bottom: .3rem solid darken($dark-blue, 10%);
-flex-grow: 1;
-margin-right: $s-size;
-padding: $s-size;
-
-}
-
-.add-option__color {
-    background: white;
-}

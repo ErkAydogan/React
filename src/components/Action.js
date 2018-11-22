@@ -7,7 +7,7 @@ import React from 'react';
         onClick={props.handlePick}
         disabled={!props.hasOptions}
       >
-        Need Help?
+        User Manuel
       </button>
     </div>
   );

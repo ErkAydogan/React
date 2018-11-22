@@ -10,7 +10,7 @@ error: undefined
       const option = e.target.elements.option.value.trim();
       const color = e.target.elements.color.value.trim();
       const price = e.target.elements.price.value.trim();
-alert(color);
+
 
       const error = this.props.handleAddOption(option,color,price);
 
@@ -18,7 +18,8 @@ alert(color);
       alert(error);
       if (!error) {
         e.target.elements.option.value = '';
-       
+        e.target.elements.color.value = '';
+        e.target.elements.price.value = '';
       }
     };
     render() {
@@ -26,10 +27,10 @@ alert(color);
         <div>
           {this.state.error && <p className="add-option-error">{this.state.error}</p>}
           <form className="add-option" onSubmit={this.handleAddOption}>
-            <input className="add-option__input" type="text" name="option" placeholder="product"/>
-            <input  type="text" name="color" placeholder="color"/>
-            <input  type="text" name="price" placeholder="price" />
-            <button className="button">Add Option</button>
+            <input className="add-option__input" type="text" name="option" placeholder="Product"/>
+            <input  className="add-color__input" type="text" name="color" placeholder="Color"/>
+            <input  className= "add-price__input" type="text" name="price" placeholder="Price" />
+            <button className="button">Add Dataset</button>
           </form>
 
           

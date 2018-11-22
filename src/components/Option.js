@@ -3,7 +3,7 @@ import React from 'react';
 const Option = (props) => (
 
   <div>
-  <p>{props.count}. ProducSt: {props.optionText} - Color: {props.colorText} - Price: {props.priceText}</p>
+  <p>{props.count}. Product: {props.optionText} , Color: {props.colorText} , Price: {props.priceText}</p>
 
 
     <button  className="button button--link" onClick={(e) => {
