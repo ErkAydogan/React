@@ -31,7 +31,6 @@ error: undefined
          </div>
          <div>
         <h3 className="widget-header__title">Your Dictionary</h3>
-        
           {this.state.error && <p className="add-dictionary-error">{this.state.error}</p>}
           <form className="add-dictionary" onSubmit={this.handleAddDictionary}>
             <input className="add-dictionary__domain" type="text" name="domain" placeholder="domain"/>

@@ -2,16 +2,17 @@ import React from 'react';
 import Dictionary from './Dictionary';
 
 const Dictionaries = (props) => (
-  
+  <div>
   <div className="widget-header">
-  <h3 className="widget-header__title">Your Dataset</h3>
-  <button onClick={this.props.handleShowDictionary}>Initial Data</button>
-    {props.domains.length === 0 && <p className="widget__message">Please add a Dictionary to get started!</p>}
-    {
-      props.domains.map((domains,index) => (
-<div key ={domains}>
+  <button onClick={props.handleShowDictionary} className="button">Show Dictionaries</button>
+      
+   </div>
+
+  {
+      props.domains.map((domain,index) => (
+<div key ={domain}>
 <Dictionary
-      domainText={domain}      
+      domainText={props.domain[index]}      
       rangeText = {props.range[index]}
       count= {index + 1}
       handleDeleteOption={props.handleDeleteOption}

@@ -5,20 +5,21 @@ import Header from './Header';
 import Options from './Options';
 import OptionModal from './OptionModal';
 import AddDictionary from './AddDictionary';
-import Dictionary from './Dictionary';
+import Dictionaries from './Dictionaries';
 
 export default class IndecisionApp extends React.Component {
   state = {
     options: [],
     colors: [],
     prices: [],
-    domain: ['Stonegrey','Midnight Black', 'Mystic Silver'],
-    range: ['Dark Grey', 'Black', 'Silver'],
+    domains: [],
+    ranges: [],
     selectedOption: undefined
   };
   handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
   };
+ 
   handleGetData = () => {
     this.setState(() => ({ options: ['Apple iPhone 6s','Samsung Galaxy S8', 'Huawei P9'] }));
     this.setState(() => ({ colors: ['Dark Grey', 'Black', 'Silver'] }));
@@ -26,8 +27,9 @@ export default class IndecisionApp extends React.Component {
   };
 
   handleShowDictionary = () => {
-    this.setState(() => ({ domains: ['Apple iPhone 6s','Samsung Galaxy S8', 'Huawei P9'] }));
-    this.setState(() => ({ ranges: ['Apple iPhone 6s','Samsung Galaxy S8', 'Huawei P9'] }));
+    alert("ABC");
+    this.setState(() => ({ domains: ['Stonegrey','Midnight Black', 'Mystic Silver'] }));
+    this.setState(() => ({ ranges: ['Dark Grey', 'Black', 'Silver'] }));
   }
 
   handleClearSelectedOption = () => {
@@ -49,6 +51,7 @@ export default class IndecisionApp extends React.Component {
 
 
   handleAddOption = (option,color,price) => {
+    
     alert(option);
     if (!option) {
       return 'Enter valid value to add item';
@@ -64,7 +67,7 @@ export default class IndecisionApp extends React.Component {
 
     if (!price) {
       return 'Enter valid value to add item';
-    } else if (this.state.options.indexOf(option) > -1) {
+    } else if (this.state.prices.indexOf(option) > -1) {
       return 'This option already exists';
     }
 
@@ -80,6 +83,7 @@ export default class IndecisionApp extends React.Component {
   handleAddDictionary = (domain,range) => {
 alert(domain);
 alert(range);
+alert("EDMIR");
 
     if(!domain){
       return 'Enter valid domain to add a dictionary';
@@ -95,11 +99,11 @@ alert(range);
 
     this.setState((prevState) => ({
       domains: prevState.domains.concat(domain),
-      ranges: prevState.ranges.concat(range),
+      ranges: prevState.ranges.concat(range)
      
     }));
 
-  }
+  };
 
 
   componentDidMount() {
@@ -107,10 +111,26 @@ alert(range);
       const json = localStorage.getItem('options');
       const options = JSON.parse(json);
 
-     
+      const json1= localStorage.getItem(props.colors[index]);
+      const colors = JSON.parse(json1);
 
-      if (options) {
+     
+      const json2= localStorage.getItem(props.prices[index]);
+      const prices = JSON.parse(json2);
+      
+      const json4= localStorage.getItem(props.domains[index]);
+      const domains = JSON.parse(json4);
+
+      const json5= localStorage.getItem(props.ranges[index]);
+      const ranges = JSON.parse(json5);
+
+      if (options || colors || prices || domains || ranges) {
         this.setState(() => ({ options }));
+        this.setState(() => ({ colors }));
+        this.setState(() => ({ prices }));
+        this.setState(() => ({ domains }));
+        this.setState(() => ({ ranges }));
+
       }
      
     } catch (e) {
@@ -120,7 +140,15 @@ alert(range);
   componentDidUpdate(prevProps, prevState) {
     if (prevState.options.length !== this.state.options.length) {
       const json = JSON.stringify(this.state.options);
+      const json1 = JSON.stringify(this.state.colors);
+      const json2 = JSON.stringify(this.state.prices);
+      const json4 = JSON.stringify(this.state.domains);
+      const json5 = JSON.stringify(this.state.ranges);
       localStorage.setItem('options', json);
+      localStorage.setItem('colors', json1);
+      localStorage.setItem('prices', json2);
+      localStorage.setItem('domains', json4);
+      localStorage.setItem('ranges', json5);
     }
     
 
@@ -144,16 +172,27 @@ alert(range);
               options={this.state.options}
               colors = {this.state.colors}
               prices = {this.state.prices}
+            
+
               handleDeleteOptions={this.handleDeleteOptions}
               handleGetData={this.handleGetData}
               handleDeleteOption={this.handleDeleteOption}
             />
+
+         
          
             <AddOption
               handleAddOption={this.handleAddOption}
             />
+
+            <Dictionaries
+            domains = {this.state.domains}
+            ranges = {this.state.ranges}
+
+            handleShowDictionary={this.handleShowDictionary}
+            />
             <AddDictionary
-              handleAddDictionary= {this.handleDictionaryOption}
+            handleAddDictionary= {this.handleAddDictionary}
             />
           </div>
         </div>
