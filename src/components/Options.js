@@ -31,11 +31,3 @@ const Options = (props) => (
 
   export default Options;
 
-
-    /* <Option
-          key={option}
-          optionText={option}      
-          count= {index + 1}
-          handleDeleteOption={props.handleDeleteOption}
-        />
-*/

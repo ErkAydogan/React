@@ -3,11 +3,10 @@ import React from 'react';
 const Option = (props) => (
 
   <div>
-  <p>{props.count}. Product: {props.optionText} , Color: {props.colorText} , Price: {props.priceText}</p>
-
-
+  <p className="add-option-color">{props.count}. Product: {props.optionText} , Color: {props.colorText} , Price: {props.priceText}</p>
+  
     <button  className="button button--link" onClick={(e) => {
-        props.handleDeleteOption(props.optionText);
+        props.handleDeleteOption(props.optionText,props.colorText,props.priceText);
       }}
     >
       remove
@@ -15,6 +14,5 @@ const Option = (props) => (
     <hr></hr>
   </div>
 );
-
 
 export default Option;

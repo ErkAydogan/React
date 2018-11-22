@@ -10,10 +10,10 @@ import Dictionaries from './Dictionaries';
 export default class IndecisionApp extends React.Component {
   state = {
     options: ['Apple iPhone 6s','Samsung Galaxy S8', 'Huawei P9'],
-    colors: ['Dark Grey', 'Black', 'Silver'],
+    colors: ['Stonegrey', 'Black', 'Silver'],
     prices: ['CHF 769','CHF 569', 'CHF 272'],
-    domains: [],
-    ranges: [],
+    domains: ['Stonegrey','Midnight Black', 'Mystic Silver'],
+    ranges: ['Dark Grey', 'Black', 'Silver'],
     selectedOption: undefined
   };
   handleDeleteOptions = () => {
@@ -24,12 +24,11 @@ export default class IndecisionApp extends React.Component {
  
   handleGetData = () => {
     this.setState(() => ({ options: ['Apple iPhone 6s','Samsung Galaxy S8', 'Huawei P9'] }));
-    this.setState(() => ({ colors: ['Dark Grey', 'Black', 'Silver'] }));
+    this.setState(() => ({ colors: ['Stonegrey', 'Black', 'Silver'] }));
     this.setState(() => ({ prices: ['CHF 769','CHF 569', 'CHF 272'] }));
   };
 
   handleShowDictionary = () => {
-    alert("ABC");
     this.setState(() => ({ domains: ['Stonegrey','Midnight Black', 'Mystic Silver'] }));
     this.setState(() => ({ ranges: ['Dark Grey', 'Black', 'Silver'] }));
   }
@@ -38,11 +37,29 @@ export default class IndecisionApp extends React.Component {
     this.setState(() => ({ selectedOption: undefined }));
   }
 
-  handleDeleteOption = (optionToRemove) => {
+  handleDeleteOption = (optionToRemove, colorToRemove, priceToRemove) => {
     this.setState((prevState) => ({
-      options: prevState.options.filter((option) => optionToRemove !== option)
+      options: prevState.options.filter((option) => optionToRemove !== option),
+      colors: prevState.colors.filter((color) => colorToRemove !== color),
+      prices: prevState.prices.filter((price) => priceToRemove !== price)
     }));
   };
+
+
+  handleDeleteDictionary = (domainToRemove) => {
+
+    this.setState((prevState) => ({
+      domains: prevState.domains.filter((domain) => domainToRemove !== domain)
+    }));
+  };
+
+
+  handleDeleteDictionaries = () => {
+    this.setState(() => ({ domains: [] }));
+    this.setState(() => ({ ranges: [] }));
+  };
+  
+
   handlePick = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length);
     const option = this.state.options[randomNum];
@@ -53,8 +70,7 @@ export default class IndecisionApp extends React.Component {
 
 
   handleAddOption = (option,color,price) => {
-    
-    alert(option);
+ 
     if (!option) {
       return 'Enter a valid value to add item';
     } else if (this.state.options.indexOf(option) > -1) {
@@ -64,13 +80,13 @@ export default class IndecisionApp extends React.Component {
     if (!color) {
       return 'Enter a valid value to add item';
     } else if (this.state.colors.indexOf(color) > -1) {
-      return 'This option already exists';
+      return 'This color already exists';
     }
 
     if (!price) {
       return 'Enter a valid value to add item';
     } else if (this.state.prices.indexOf(option) > -1) {
-      return 'This option already exists';
+      return 'This price already exists';
     }
 
     
@@ -83,8 +99,8 @@ export default class IndecisionApp extends React.Component {
 
   
   handleAddDictionary = (domain,range) => {
-alert(domain);
-
+alert(domain[1]);
+    
  if(!domain){
       return 'Enter a valid domain to add a dictionary';
     } else if (this.state.domains.indexOf(domain) > -1) {
@@ -93,8 +109,8 @@ alert(domain);
 
     if (!range) {
       return 'Enter a valid range to add a dictionary';
-    } else if (this.state.options.indexOf(option) > -1) {
-      return 'This option already exists';
+    } else if (this.state.ranges.indexOf(range) > -1) {
+      return 'This range already exists';
     }
 
     this.setState((prevState) => ({
@@ -134,7 +150,7 @@ alert(domain);
       }
      
     } catch (e) {
-      // Do nothing at all
+      console.log(e);
     }
   }
   componentDidUpdate(prevProps, prevState) {
@@ -144,6 +160,7 @@ alert(domain);
       const json2 = JSON.stringify(this.state.prices);
       const json4 = JSON.stringify(this.state.domains);
       const json5 = JSON.stringify(this.state.ranges);
+      
       localStorage.setItem('options', json);
       localStorage.setItem('colors', json1);
       localStorage.setItem('prices', json2);
@@ -177,9 +194,7 @@ alert(domain);
               handleDeleteOptions={this.handleDeleteOptions}
               handleGetData={this.handleGetData}
               handleDeleteOption={this.handleDeleteOption}
-            />
-
-         
+            />        
          
             <AddOption
               handleAddOption={this.handleAddOption}
@@ -189,7 +204,10 @@ alert(domain);
             domains = {this.state.domains}
             ranges = {this.state.ranges}
 
+            handleDeleteDictionaries={this.handleDeleteDictionaries}     
             handleShowDictionary={this.handleShowDictionary}
+            handleDeleteDictionary={this.handleDeleteDictionary}
+           
             />
 
             <AddDictionary

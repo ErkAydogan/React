@@ -9,20 +9,15 @@ error: undefined
       e.preventDefault();
       const domain = e.target.elements.domain.value.trim();
       const range = e.target.elements.range.value.trim();
-
-      
-      alert(domain);
-      alert(range);
-
+     
       const error = this.props.handleAddDictionary(domain,range);
      
       this.setState(() => ({ error }));
-      alert(error);
       if (!error) {
         e.target.elements.domain.value = '';
         e.target.elements.range.value = '';
       }
-      alert("dcs");
+    
     };
     render() {
       return (

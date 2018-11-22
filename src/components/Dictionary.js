@@ -3,18 +3,17 @@ import React from 'react';
 const Dictionary = (props) => (
 
   <div>
-  <p>{props.count}. Domain: {props.domainText} , Range: {props.rangeText}}</p>
-
-{alert(props.domainText)}
-{alert("SOZLUK")}
+  <p className="add-dictionary-color">{props.count}. Domain: {props.domainText} , Range: {props.rangeText}</p>
+ 
 <button  className="button button--link" onClick={(e) => {
-  props.handleDeleteOption(props.domainText);
+ 
+  props.handleDeleteDictionary(props.domainText);
 }}
 >
 remove
 </button>
+<hr></hr>
   </div>
 );
-
 
 export default Dictionary;
