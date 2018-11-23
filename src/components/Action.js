@@ -4,10 +4,9 @@ import React from 'react';
     <div>
       <button
       className="big-button"
-        onClick={props.handlePick}
         disabled={!props.hasOptions}
       >
-        User Manuel
+        Please refresh the site after using remove all and then using Initial Dictionaries
       </button>
     </div>
   );
