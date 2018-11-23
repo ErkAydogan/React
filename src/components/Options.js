@@ -19,7 +19,6 @@ const Options = (props) => (
       rangeText = {props.ranges[index]}
       domainText = {props.domains[index]}
      
-     
 
       count= {index + 1}
       handleDeleteOption={props.handleDeleteOption}

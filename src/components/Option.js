@@ -5,7 +5,7 @@ const Option = (props) => (
   <div>
 
   <p className="add-option-color">
-  
+
   {props.count}. Product: {props.optionText} , Color: {props.rangeText} , Price: {props.priceText}</p>
   
 
