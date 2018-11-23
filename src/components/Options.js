@@ -16,6 +16,11 @@ const Options = (props) => (
       optionText={option}      
       colorText = {props.colors[index]}
       priceText = {props.prices[index]}
+      rangeText = {props.ranges[index]}
+      domainText = {props.domains[index]}
+     
+     
+
       count= {index + 1}
       handleDeleteOption={props.handleDeleteOption}
     />

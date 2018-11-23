@@ -10,7 +10,7 @@ import Dictionaries from './Dictionaries';
 export default class IndecisionApp extends React.Component {
   state = {
     options: ['Apple iPhone 6s','Samsung Galaxy S8', 'Huawei P9'],
-    colors: ['Stonegrey', 'Black', 'Silver'],
+    colors: ['Stonegrey', 'Midnight Black', 'Mystic Silver' ],
     prices: ['CHF 769','CHF 569', 'CHF 272'],
     domains: ['Stonegrey','Midnight Black', 'Mystic Silver'],
     ranges: ['Dark Grey', 'Black', 'Silver'],
@@ -24,7 +24,7 @@ export default class IndecisionApp extends React.Component {
  
   handleGetData = () => {
     this.setState(() => ({ options: ['Apple iPhone 6s','Samsung Galaxy S8', 'Huawei P9'] }));
-    this.setState(() => ({ colors: ['Stonegrey', 'Black', 'Silver'] }));
+    this.setState(() => ({ colors: ['Dark Grey', 'Black', 'Silver'] }));
     this.setState(() => ({ prices: ['CHF 769','CHF 569', 'CHF 272'] }));
   };
 
@@ -46,10 +46,11 @@ export default class IndecisionApp extends React.Component {
   };
 
 
-  handleDeleteDictionary = (domainToRemove) => {
+  handleDeleteDictionary = (domainToRemove, rangeToRemove) => {
 
     this.setState((prevState) => ({
-      domains: prevState.domains.filter((domain) => domainToRemove !== domain)
+      domains: prevState.domains.filter((domain) => domainToRemove !== domain),
+      ranges: prevState.ranges.filter((range) => rangeToRemove !== range)
     }));
   };
 
@@ -57,6 +58,7 @@ export default class IndecisionApp extends React.Component {
   handleDeleteDictionaries = () => {
     this.setState(() => ({ domains: [] }));
     this.setState(() => ({ ranges: [] }));
+    this.setState(() => ({ colors: [] }));
   };
   
 
@@ -99,18 +101,26 @@ export default class IndecisionApp extends React.Component {
 
   
   handleAddDictionary = (domain,range) => {
-alert(domain[1]);
+    
     
  if(!domain){
       return 'Enter a valid domain to add a dictionary';
-    } else if (this.state.domains.indexOf(domain) > -1) {
+    } else if (this.state.domains.indexOf(domain) > -1 ) {
       return 'This domain already exists';
+    }else if(this.state.ranges.indexOf(domain) > -1 && this.state.domains.indexOf(range) > -1){
+      return 'This is a cycle please try another';
+    }else if(this.state.ranges.indexOf(domain) > -1){
+      return 'This is a chain please try another';
     }
 
     if (!range) {
       return 'Enter a valid range to add a dictionary';
     } else if (this.state.ranges.indexOf(range) > -1) {
       return 'This range already exists';
+    }else if(this.state.domains.indexOf(range) > -1 && this.state.ranges.indexOf(domain) > -1){
+      return 'This is a cycle please try another';
+    }else if(this.state.ranges.indexOf(domain) > -1){
+      return 'This is a chain please try another';
     }
 
     this.setState((prevState) => ({
@@ -189,8 +199,10 @@ alert(domain[1]);
               options={this.state.options}
               colors = {this.state.colors}
               prices = {this.state.prices}
-            
+              ranges = {this.state.ranges}
+              domains = {this.state.domains}
 
+            
               handleDeleteOptions={this.handleDeleteOptions}
               handleGetData={this.handleGetData}
               handleDeleteOption={this.handleDeleteOption}

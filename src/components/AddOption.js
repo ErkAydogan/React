@@ -21,7 +21,8 @@ error: undefined
         e.target.elements.color.value = '';
         e.target.elements.price.value = '';
       }
-    };
+     };
+
     render() {
       return (
         <div>
@@ -32,8 +33,6 @@ error: undefined
             <input  className= "add-price__input" type="text" name="price" placeholder="Price" />
             <button className="button">Add Dataset</button>
           </form>
-
-          
         </div>
       );
     }
