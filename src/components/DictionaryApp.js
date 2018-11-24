@@ -163,6 +163,7 @@ export default class DictionaryApp extends React.Component {
 			}
 		);
 	};
+//console.log();
 
 	componentDidMount() {
 		try {
