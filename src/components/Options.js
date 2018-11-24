@@ -2,7 +2,6 @@ import React from 'react';
 import Option from './Option';
 
 const Options = props => {
-	// console.log(props);
 
 	return (
 		<div>

@@ -94,20 +94,13 @@ export default class DictionaryApp extends React.Component {
 
 
 	handleAddOption = (option, color, price) => {
-		// console.log({ option, color, price });
+	
 
 		if (!option) {
 			return 'Enter a valid value to add item';
 		} else if (this.state.options.indexOf(option) > -1) {
 			return 'This option already exists';
 		}
-
-	/*	if (!color) {
-			return 'Enter a valid value to add item';
-		} else if (this.state.colors.indexOf(color) > -1) {
-			return 'This color already exists';
-		}
-*/
 
 		if (!price) {
 			return 'Enter a valid value to add item';
