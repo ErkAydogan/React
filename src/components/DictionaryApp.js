@@ -49,8 +49,10 @@ export default class DictionaryApp extends React.Component {
 		);
 	};
 
+
 	handleClearSelectedOption = () => {
 		this.setState(() => ({ selectedOption: undefined }));
+		
 	};
 
 	handleDeleteOption = (optionToRemove, colorToRemove, priceToRemove) => {

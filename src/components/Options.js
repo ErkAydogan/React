@@ -13,6 +13,7 @@ const Options = props => {
 				<button
 					className="button button--link"
 					onClick={props.handleDeleteOptions}
+					//console.log(colorText);
 				>
 					Remove All
 				</button>
