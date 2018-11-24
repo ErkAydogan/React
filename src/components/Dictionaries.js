@@ -9,7 +9,7 @@ const Dictionaries = props => (
 				className="button button--link"
 				onClick={props.handleShowDictionary}
 			>
-				Show Dictionaries
+				Initial Dictionaries
 			</button>
 			<button
 				className="button button--link"
