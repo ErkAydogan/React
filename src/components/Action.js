@@ -6,7 +6,7 @@ import React from 'react';
       className="big-button"
         disabled={!props.hasOptions}
       >
-        Please refresh the site after using remove all and then using Initial Dictionaries
+       Welcome
       </button>
     </div>
   );

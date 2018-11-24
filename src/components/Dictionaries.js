@@ -5,8 +5,11 @@ const Dictionaries = props => (
 	<div>
 		<div className="widget-header">
 			<h3 className="widget-header__title">Your Dictionary</h3>
-			<button className="button button--link" onClick={props.handleShowDictionary}>
-				Initial Dictionaries
+			<button
+				className="button button--link"
+				onClick={props.handleShowDictionary}
+			>
+				Show Dictionaries
 			</button>
 			<button
 				className="button button--link"

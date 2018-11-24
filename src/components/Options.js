@@ -9,7 +9,7 @@ const Options = props => {
 			<div className="widget-header">
 				<h3 className="widget-header__title">Your Dataset</h3>
 				<button className="button button--link" onClick={props.handleGetData}>
-					Initial Data
+					Show Data
 				</button>
 				<button
 					className="button button--link"
@@ -19,19 +19,19 @@ const Options = props => {
 				</button>
 			</div>
 			{props.options.length === 0 && (
-				<p className="widget__message">Please press Initial Data to get started!</p>
+				<p className="widget__message">Please add a Product to get started!</p>
 			)}
 			{props.options.map((option, index) => {
-				let colorIndex = props.colors[index];
-				let colorText = props.ranges[colorIndex];
-			
+				let colorText = props.colors[index]; // colorText is domain
+				let domainIndex = props.domains.indexOf(colorText);
+				let rangeText = props.ranges[domainIndex];
 				return (
 					<div key={option}>
 						<Option
 							optionText={option}
 							colorText={colorText}
-							colorIndex={colorIndex}
-							priceText={props.prices[index]}						
+							rangeText={rangeText}
+							priceText={props.prices[index]}
 							count={index + 1}
 							handleDeleteOption={props.handleDeleteOption}
 						/>
